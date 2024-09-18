@@ -1,24 +1,52 @@
-﻿namespace ShowdoMilhao;
-
-public partial class MainPage : ContentPage
+﻿namespace ShowdoMilhao
 {
-	int count = 0;
+    public partial class MainPage : ContentPage
+    {
+        public MainPage()
+        {
+            InitializeComponent();
+        }
 
-	public MainPage()
-	{
-		InitializeComponent();
-	}
+        // Eventos para os botões do meio
+        private void OnButton1Clicked(object sender, EventArgs e)
+        {
+            // Ação do Botão 1
+        }
 
-	private void OnCounterClicked(object sender, EventArgs e)
-	{
-		count++;
+        private void OnButton2Clicked(object sender, EventArgs e)
+        {
+            // Ação do Botão 2
+        }
 
-		if (count == 1)
-			CounterBtn.Text = $"Clicked {count} time";
-		else
-			CounterBtn.Text = $"Clicked {count} times";
+        private void OnButton3Clicked(object sender, EventArgs e)
+        {
+            // Ação do Botão 3
+        }
 
-		SemanticScreenReader.Announce(CounterBtn.Text);
-	}
+        private void OnButton4Clicked(object sender, EventArgs e)
+        {
+            // Ação do Botão 4
+        }
+
+        private void OnButton5Clicked(object sender, EventArgs e)
+        {
+            // Ação do Botão 5
+        }
+
+        // Eventos para os botões na parte inferior
+        private void OnButton6Clicked(object sender, EventArgs e)
+        {
+            // Ação do Botão 6
+        }
+
+        private void OnButton7Clicked(object sender, EventArgs e)
+        {
+            // Ação do Botão 7
+        }
+
+        private void OnButton8Clicked(object sender, EventArgs e)
+        {
+            // Ação do Botão 8
+        }
+    }
 }
-

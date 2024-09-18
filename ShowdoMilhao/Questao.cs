@@ -53,6 +53,8 @@ public class Questao
         return buttonResposta4;
         else if (respostaEscolhida == 5)
         return buttonResposta5;
+        else
+        return null;
     }
 
     public bool VerifiicarResposta(int respostaescolhida)
