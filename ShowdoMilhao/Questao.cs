@@ -1,4 +1,4 @@
-namespace Milhao;
+namespace ShowdoMilhao;
 
 public class Questao
 {
@@ -15,7 +15,7 @@ public class Questao
 
     public string resposta5;
 
-    public int respostacerta;
+    public int respostaCorreta;
 
     public int nivel;
 
@@ -59,7 +59,7 @@ public class Questao
 
     public bool VerifiicarResposta(int respostaescolhida)
     {
-        if (respostacerta == respostaescolhida)
+        if (respostaCorreta == respostaescolhida)
         {
             var verificacao = buttonEscolhido(respostaescolhida);
             verificacao.BackgroundColor = Colors.Green;
@@ -67,7 +67,7 @@ public class Questao
         }
         else
         {
-            var verificacaoCorreto = buttonEscolhido(respostacerta);
+            var verificacaoCorreto = buttonEscolhido(respostaCorreta);
             var verificacaoIncorreto = buttonEscolhido(respostaescolhida);
             verificacaoCorreto.BackgroundColor = Colors.Yellow;
             verificacaoIncorreto.BackgroundColor = Colors.Red;
