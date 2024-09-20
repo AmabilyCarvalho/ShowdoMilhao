@@ -9,7 +9,25 @@ public class Gerenciador
     Questao questaoCorrente;
     public Gerenciador (Label labelPergunta,Button buttonResposta1,Button buttonResposta2,Button buttonResposta3,Button buttonResposta4,Button buttonResposta5)
     {
-        CriarQuestoes (labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5);
+        CriarQuestoes(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5);
+    }
+
+    public void ProximaPergunta()
+    {
+        var numRandomico = Random.Shared.Next(0,ListaQuestao.Count -1);
+        while(ListaQuestoesRespondidas.Contains(numRandomico))
+        numRandomico = Random.Shared.Next(0,ListaQuestoesRespondidas.Count -1);
+        ListaQuestoesRespondidas.Add (numRandomico);
+        questaoCorrente = ListaQuestao[numRandomico];
+        questaoCorrente.Desenhar();
+    }
+    public async void VerificaCorreto(int resposta)
+    {
+        if (questaoCorrente!.VerifiicarResposta(resposta))
+        {
+            await Task.Delay(1500);
+            ProximaPergunta();
+        }
     }
     void CriarQuestoes (Label labelPergunta,Button buttonResposta1,Button buttonResposta2,Button buttonResposta3,Button buttonResposta4,Button buttonResposta5)
 {
@@ -112,6 +130,116 @@ public class Gerenciador
     Q9.respostaCorreta = 4;
     Q9.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5);
     ListaQuestao.Add(Q9);
+
+    var Q10 = new Questao ();
+    Q10.pergunta = "Qual é o nome da cidade onde mora a personagem Qiqi?";
+    Q10.resposta1 = "Liyue";
+    Q10.resposta2 = "Mondstadt";
+    Q10.resposta3 = "Inazuma";
+    Q10.resposta4 = "Sumeru";
+    Q10.resposta5 = "Snezhnaya";
+    Q10.respostaCorreta = 1;
+    Q10.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5);
+    ListaQuestao.Add(Q10);
+
+    var Q11 = new Questao ();
+    Q11.pergunta = "Oque a Alice é da Klee?";
+    Q11.resposta1 = "Mãe";
+    Q11.resposta2 = "Avó";
+    Q11.resposta3 = "Amiga";
+    Q11.resposta4 = "Conhecida";
+    Q11.resposta5 = "Tia";
+    Q11.respostaCorreta = 1;
+    Q11.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5);
+    ListaQuestao.Add(Q11);
+
+    var Q12 = new Questao ();
+    Q12.pergunta = "Quem é o irmão da Lumine??";
+    Q12.resposta1 = "Dainsleif";
+    Q12.resposta2 = "Ayato";
+    Q12.resposta3 = "Cyno";
+    Q12.resposta4 = "Aether";
+    Q12.resposta5 = "pulcinella";
+    Q12.respostaCorreta = 4;
+    Q12.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5);
+    ListaQuestao.Add(Q12);
+
+    var Q13 = new Questao ();
+    Q13.pergunta = "Qual cidade é conhecida como a cidade da liberdade?";
+    Q13.resposta1 = "Liyue";
+    Q13.resposta2 = "Mondstadt";
+    Q13.resposta3 = "Inazuma";
+    Q13.resposta4 = "Sumeru";
+    Q13.resposta5 = "Snezhnaya";
+    Q13.respostaCorreta = 2;
+    Q13.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5);
+    ListaQuestao.Add(Q13);
+    
+    var Q14 = new Questao ();
+    Q14.pergunta = "*";
+    Q14.resposta = "*";
+    Q14.resposta2 = "*";
+    Q14.resposta3 = "*";
+    Q14.resposta4 = "*";
+    Q14.resposta5 = "*";
+    Q14.respostaCorreta = 1;
+    Q14.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5);
+    ListaQuestao.Add(Q14);
+
+    var Q10 = new Questao ();
+    Q10.pergunta = "Qual é o nome da cidade onde mora a personagem Qiqi?";
+    Q10.resposta1 = "Liyue";
+    Q10.resposta2 = "Mondstadt";
+    Q10.resposta3 = "Inazuma";
+    Q10.resposta4 = "Sumeru";
+    Q10.resposta5 = "Snezhnaya";
+    Q10.respostaCorreta = 1;
+    Q10.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5);
+    ListaQuestao.Add(Q10);
+
+    var Q10 = new Questao ();
+    Q10.pergunta = "Qual é o nome da cidade onde mora a personagem Qiqi?";
+    Q10.resposta1 = "Liyue";
+    Q10.resposta2 = "Mondstadt";
+    Q10.resposta3 = "Inazuma";
+    Q10.resposta4 = "Sumeru";
+    Q10.resposta5 = "Snezhnaya";
+    Q10.respostaCorreta = 1;
+    Q10.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5);
+    ListaQuestao.Add(Q10);
+
+    var Q10 = new Questao ();
+    Q10.pergunta = "Qual é o nome da cidade onde mora a personagem Qiqi?";
+    Q10.resposta1 = "Liyue";
+    Q10.resposta2 = "Mondstadt";
+    Q10.resposta3 = "Inazuma";
+    Q10.resposta4 = "Sumeru";
+    Q10.resposta5 = "Snezhnaya";
+    Q10.respostaCorreta = 1;
+    Q10.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5);
+    ListaQuestao.Add(Q10);
+
+    var Q10 = new Questao ();
+    Q10.pergunta = "Qual é o nome da cidade onde mora a personagem Qiqi?";
+    Q10.resposta1 = "Liyue";
+    Q10.resposta2 = "Mondstadt";
+    Q10.resposta3 = "Inazuma";
+    Q10.resposta4 = "Sumeru";
+    Q10.resposta5 = "Snezhnaya";
+    Q10.respostaCorreta = 1;
+    Q10.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5);
+    ListaQuestao.Add(Q10);
+
+    var Q10 = new Questao ();
+    Q10.pergunta = "Qual é o nome da cidade onde mora a personagem Qiqi?";
+    Q10.resposta1 = "Liyue";
+    Q10.resposta2 = "Mondstadt";
+    Q10.resposta3 = "Inazuma";
+    Q10.resposta4 = "Sumeru";
+    Q10.resposta5 = "Snezhnaya";
+    Q10.respostaCorreta = 1;
+    Q10.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5);
+    ListaQuestao.Add(Q10);
 
     var Q10 = new Questao ();
     Q10.pergunta = "Qual é o nome da cidade onde mora a personagem Qiqi?";

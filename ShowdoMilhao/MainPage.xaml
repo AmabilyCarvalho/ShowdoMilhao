@@ -6,31 +6,72 @@
              BackgroundColor="#040b39">
 
     <ScrollView>
-        <StackLayout Padding="10" Spacing="10">
+        <StackLayout Padding="10"
+                Spacing="10">
 
-              
-                <Image Source="alien.png"
-                       HorizontalOptions="Center"
-                       VerticalOptions="Center"
-                       HeightRequest="235"/>
 
-            <Frame HeightRequest="100" BackgroundColor="#70caca">
+            <Image Source="alien.png"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"
+                   HeightRequest="235"/>
+
+            <Frame HeightRequest="100"
+                    BackgroundColor="#70caca">
                 <Label Text="Texto de pergunta"
+                       x:Name="labelPergunta"
                        TextColor="#ffe591"
                        HorizontalOptions="Center"
-                       VerticalOptions="Center" />
+                       VerticalOptions="Center"/>
             </Frame>
 
-            <Button Text="Resposta 1" TextColor="#f8a23b" HeightRequest="50" BackgroundColor="#ffe591" />
-            <Button Text="Resposta 2" TextColor="#f8a23b" HeightRequest="50" BackgroundColor="#ffe591"/>
-            <Button Text="Resposta 3" TextColor="#f8a23b" HeightRequest="50" BackgroundColor="#ffe591"/>
-            <Button Text="Resposta 4" TextColor="#f8a23b" HeightRequest="50" BackgroundColor="#ffe591"/>
-            <Button Text="Resposta 5" TextColor="#f8a23b" HeightRequest="50" BackgroundColor="#ffe591"/>
+            <Button Text="Resposta 1"
+                    TextColor="#f8a23b"
+                    x:Name="buttonResposta1"
+                    Clicked="OnButton1Clicked"
+                    HeightRequest="50"
+                    BackgroundColor="#ffe591"/>
+
+            <Button Text="Resposta 2"
+                    x:Name="buttonResposta2"
+                    Clicked="OnButton2Clicked"
+                    TextColor="#f8a23b"
+                    HeightRequest="50"
+                    BackgroundColor="#ffe591"/>
+
+            <Button Text="Resposta 3"
+                    TextColor="#f8a23b"
+                    x:Name="buttonResposta3"
+                    Clicked="OnButton3Clicked"
+                    HeightRequest="50"
+                    BackgroundColor="#ffe591"/>
+
+            <Button Text="Resposta 4"
+                    TextColor="#f8a23b"
+                    x:Name="buttonResposta4"
+                    Clicked="OnButton4Clicked"
+                    HeightRequest="50"
+                    BackgroundColor="#ffe591"/>
+
+            <Button Text="Resposta 5"
+                    TextColor="#f8a23b"
+                    x:Name="buttonResposta5"
+                    Clicked="OnButton5Clicked"
+                    HeightRequest="50"
+                    BackgroundColor="#ffe591"/>
 
             <Grid ColumnDefinitions="*,*,*">
-                <Button Text="Ajuda 1" TextColor="#ffe591" Grid.Column="0" BackgroundColor="#f8a23b" />
-                <Button Text="Ajuda 2" TextColor="#ffe591" Grid.Column="1" BackgroundColor="#f8a23b" />
-                <Button Text="Ajuda 3" TextColor="#ffe591" Grid.Column="2" BackgroundColor="#f8a23b" />
+                <Button Text="Ajuda 1"
+                        TextColor="#ffe591"
+                        Grid.Column="0"
+                        BackgroundColor="#f8a23b"/>
+                <Button Text="Ajuda 2"
+                        TextColor="#ffe591"
+                        Grid.Column="1"
+                        BackgroundColor="#f8a23b"/>
+                <Button Text="Ajuda 3"
+                        TextColor="#ffe591"
+                        Grid.Column="2"
+                        BackgroundColor="#f8a23b"/>
             </Grid>
 
         </StackLayout>
