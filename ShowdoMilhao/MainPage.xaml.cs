@@ -16,24 +16,24 @@
             gerenciador.VerificaCorreto(1);
         }
 
-        private void OnButton2Clicked(object sender, EventArgs e)
+        void OnButton2Clicked(object sender, EventArgs e)
         {
-       
+            gerenciador.VerificaCorreto(2);
         }
 
-        private void OnButton3Clicked(object sender, EventArgs e)
+        void OnButton3Clicked(object sender, EventArgs e)
         {
-         
+            gerenciador.VerificaCorreto(3);
         }
 
-        private void OnButton4Clicked(object sender, EventArgs e)
+        void OnButton4Clicked(object sender, EventArgs e)
         {
-           
+            gerenciador.VerificaCorreto(4);
         }
 
         private void OnButton5Clicked(object sender, EventArgs e)
         {
-        
+            gerenciador.VerificaCorreto(5);
         }
 
        
