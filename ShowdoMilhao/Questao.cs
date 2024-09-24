@@ -17,7 +17,7 @@ public class Questao
 
     public int respostaCorreta;
 
-    public int nivel;
+    public int Nivel;
 
     Label labelPergunta;
 
@@ -39,6 +39,18 @@ public class Questao
         buttonResposta3.Text = resposta3;
         buttonResposta4.Text = resposta4;
         buttonResposta5.Text = resposta5;
+
+        this.buttonResposta1!.BackgroundColor = Color.FromArgb("#ffe591");
+        this.buttonResposta1!.TextColor = Color.FromArgb("#f8a23b");
+        this.buttonResposta2!.BackgroundColor = Color.FromArgb("#ffe591");
+        this.buttonResposta2!.TextColor = Color.FromArgb("#f8a23b");
+        this.buttonResposta3!.BackgroundColor = Color.FromArgb("#ffe591");
+        this.buttonResposta3!.TextColor = Color.FromArgb("#f8a23b");
+        this.buttonResposta4!.BackgroundColor = Color.FromArgb("#ffe591");
+        this.buttonResposta4!.TextColor = Color.FromArgb("#f8a23b");
+        this.buttonResposta5!.BackgroundColor = Color.FromArgb("#ffe591");
+        this.buttonResposta5!.TextColor = Color.FromArgb("#f8a23b");
+
     }
 
     private Button buttonEscolhido(int respostaEscolhida)

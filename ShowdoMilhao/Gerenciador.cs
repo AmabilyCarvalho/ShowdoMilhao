@@ -35,6 +35,7 @@ public class Gerenciador
     void CriarQuestoes(Label labelPergunta, Button buttonResposta1, Button buttonResposta2, Button buttonResposta3, Button buttonResposta4, Button buttonResposta5)
     {
         var Q1 = new Questao();
+        Q1.Nivel = 1;
         Q1.pergunta = "Qual é o nome do Arconte de Mondstadt?";
         Q1.resposta1 = "Zhongli";
         Q1.resposta1 = "Raiden Shogun";
@@ -47,6 +48,7 @@ public class Gerenciador
         ListaQuestao.Add(Q1);
 
         var Q2 = new Questao();
+        Q2.Nivel = 1;
         Q2.pergunta = "Qual elemento é associado a Diluc?";
         Q2.resposta1 = "Hydro";
         Q2.resposta2 = "Electro";
@@ -58,6 +60,7 @@ public class Gerenciador
         ListaQuestao.Add(Q2);
 
         var Q3 = new Questao();
+        Q3.Nivel = 1;
         Q3.pergunta = "Qual é a região conhecida como a terra do conhecimento?";
         Q3.resposta1 = "Liyue";
         Q3.resposta2 = "Mondstadt";
@@ -69,6 +72,7 @@ public class Gerenciador
         ListaQuestao.Add(Q3);
 
         var Q4 = new Questao();
+        Q4.Nivel = 1;
         Q4.pergunta = "Em qual região se encontra a sede dos Fatui?";
         Q4.resposta1 = "Snezhnaya";
         Q4.resposta2 = "Mondstadt";
@@ -80,6 +84,7 @@ public class Gerenciador
         ListaQuestao.Add(Q4);
 
         var Q5 = new Questao();
+        Q5.Nivel = 1;
         Q5.pergunta = "Quem é a deusa da Eternidade em Genshin Impact?";
         Q5.resposta1 = "Barbatos";
         Q5.resposta2 = "Raiden Shogun";
@@ -91,6 +96,7 @@ public class Gerenciador
         ListaQuestao.Add(Q5);
 
         var Q6 = new Questao();
+        Q6.Nivel = 1;
         Q6.pergunta = "Qual personagem é um usuária de Dendro?";
         Q6.resposta1 = "Hu Tao";
         Q6.resposta2 = "Ganyu";
@@ -102,6 +108,7 @@ public class Gerenciador
         ListaQuestao.Add(Q6);
 
         var Q7 = new Questao();
+        Q7.Nivel = 1;
         Q7.pergunta = "Qual é o nome do Arconte de Liyue?";
         Q7.resposta1 = "Venti";
         Q7.resposta2 = "Zhongli";
@@ -113,6 +120,7 @@ public class Gerenciador
         ListaQuestao.Add(Q7);
 
         var Q8 = new Questao();
+        Q8.Nivel = 1;
         Q8.pergunta = "Qual personagem é conhecido por ser um alquimista em Mondstadt?";
         Q8.resposta1 = "Kaeya";
         Q8.resposta2 = "Albedo";
@@ -124,7 +132,8 @@ public class Gerenciador
         ListaQuestao.Add(Q8);
 
         var Q9 = new Questao();
-        Q9.pergunta = "Qual personagem é a líder dos Knights of Favonius?";
+        Q9.Nivel = 1;
+        Q9.pergunta = "Quem é o atual chefe dos Cavaleiros de Favonius?";
         Q9.resposta1 = "Kaeya";
         Q9.resposta2 = "Lisa";
         Q9.resposta3 = "Barbara";
@@ -135,6 +144,7 @@ public class Gerenciador
         ListaQuestao.Add(Q9);
 
         var Q10 = new Questao();
+        Q10.Nivel = 1;
         Q10.pergunta = "Qual é o nome da cidade onde mora a personagem Qiqi?";
         Q10.resposta1 = "Liyue";
         Q10.resposta2 = "Mondstadt";
@@ -146,6 +156,7 @@ public class Gerenciador
         ListaQuestao.Add(Q10);
 
         var Q11 = new Questao();
+        Q11.Nivel = 2;
         Q11.pergunta = "Oque a Alice é da Klee?";
         Q11.resposta1 = "Mãe";
         Q11.resposta2 = "Avó";
@@ -157,6 +168,7 @@ public class Gerenciador
         ListaQuestao.Add(Q11);
 
         var Q12 = new Questao();
+        Q12.Nivel = 2;
         Q12.pergunta = "Quem é o irmão da Lumine??";
         Q12.resposta1 = "Dainsleif";
         Q12.resposta2 = "Ayato";
@@ -168,6 +180,7 @@ public class Gerenciador
         ListaQuestao.Add(Q12);
 
         var Q13 = new Questao();
+        Q13.Nivel = 2;
         Q13.pergunta = "Qual cidade é conhecida como a cidade da liberdade?";
         Q13.resposta1 = "Liyue";
         Q13.resposta2 = "Mondstadt";
@@ -179,6 +192,7 @@ public class Gerenciador
         ListaQuestao.Add(Q13);
 
         var Q14 = new Questao();
+        Q14.Nivel = 2;
         Q14.pergunta = "Qual é o nome do protagonista masculino em Genshin Impact?";
         Q14.resposta1 = "Kinich";
         Q14.resposta2 = "Aether";
@@ -190,6 +204,7 @@ public class Gerenciador
         ListaQuestao.Add(Q14);
 
         var Q15 = new Questao();
+        Q15.Nivel = 2;
         Q15.pergunta = "Qual elemento é associado a Pyro?";
         Q15.resposta1 = "Terra";
         Q15.resposta2 = "Vento";
@@ -201,6 +216,7 @@ public class Gerenciador
         ListaQuestao.Add(Q15);
 
         var Q16 = new Questao();
+        Q16.Nivel = 2;
         Q16.pergunta = "Qual é o nome da região que foi lançada após Mondstadt e Liyue?";
         Q16.resposta1 = "Liyue";
         Q16.resposta2 = "Mondstadt";
@@ -212,6 +228,7 @@ public class Gerenciador
         ListaQuestao.Add(Q16);
 
         var Q17 = new Questao();
+        Q17.Nivel = 2;
         Q17.pergunta = "Quem é o líder dos Fatui?";
         Q17.resposta1 = "Scaramouche";
         Q17.resposta2 = "Pantalone";
@@ -223,6 +240,7 @@ public class Gerenciador
         ListaQuestao.Add(Q17);
 
         var Q18 = new Questao();
+        Q18.Nivel = 2;
         Q18.pergunta = "Qual é o nome do local onde os viajantes começam sua jornada?";
         Q18.resposta1 = "Liyue";
         Q18.resposta2 = "Mondstadt";
@@ -234,6 +252,7 @@ public class Gerenciador
         ListaQuestao.Add(Q18);
 
         var Q19 = new Questao();
+        Q19.Nivel = 2;
         Q19.pergunta = "Qual é a relação de Paimon com o protagonista?";
         Q19.resposta1 = "Rival";
         Q19.resposta2 = "Irmã";
@@ -245,6 +264,7 @@ public class Gerenciador
         ListaQuestao.Add(Q19);
 
         var Q20 = new Questao();
+        Q20.Nivel = 2;
         Q20.pergunta = "Qual é o nome da cidade onde mora a personagem Qiqi?";
         Q20.resposta1 = "Liyue";
         Q20.resposta2 = "Mondstadt";
@@ -254,6 +274,198 @@ public class Gerenciador
         Q20.respostaCorreta = 1;
         Q20.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5);
         ListaQuestao.Add(Q20);
+
+        var Q21 = new Questao();
+        Q21.Nivel = 3;
+        Q21.pergunta = "Qual o lema da guilda dos avemtureiros?";
+        Q21.resposta1 = "Butter in butter";
+        Q21.resposta2 = "To infinity and beyond";
+        Q21.resposta3 = "money above all";
+        Q21.resposta4 = "I Always Come Back";
+        Q21.resposta5 = "Ad Astra Abyssosque";
+        Q21.respostaCorreta = 5;
+        Q21.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5);
+        ListaQuestao.Add(Q21);
+
+        var Q22 = new Questao();
+        Q22.Nivel = 3;
+        Q22.pergunta = "Oque significa Ad Astra Abyssosque?";
+        Q22.resposta1 = "Para as estrelas e o abismo";
+        Q22.resposta2 = "Ao infinito e além";
+        Q22.resposta3 = "dinheiro acima de tudo";
+        Q22.resposta4 = "Eu sempre volto";
+        Q22.resposta5 = "manteiga na manteiga";
+        Q22.respostaCorreta = 1;
+        Q22.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5);
+        ListaQuestao.Add(Q22);
+
+        var Q23 = new Questao();
+        Q23.Nivel = 3;
+        Q23.pergunta = "Quem é o deus que governa Liyue?";
+        Q23.resposta1 = "Barbatos";
+        Q23.resposta2 = "Morax";
+        Q23.resposta3 = "Kusanali";
+        Q23.resposta4 = "Baal";
+        Q23.resposta5 = "Focalors";
+        Q23.respostaCorreta = 2;
+        Q23.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5);
+        ListaQuestao.Add(Q23);
+
+        var Q24 = new Questao();
+        Q24.Nivel = 3;
+        Q24.pergunta = "Qual é o nome do dragão que aparece no inicio do jogo?";
+        Q24.resposta1 = "Dvalin";
+        Q24.resposta2 = "Neuvillette";
+        Q24.resposta3 = "Orobashi";
+        Q24.resposta4 = "Apep";
+        Q24.resposta5 = "Azhdaha";
+        Q24.respostaCorreta = 1;
+        Q24.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5);
+        ListaQuestao.Add(Q24);
+
+        var Q25 = new Questao();
+        Q25.Nivel = 3;
+        Q25.pergunta = "Qual é o nome da associação de viajantes em Teyvat?";
+        Q25.resposta1 = "Os Cavaleiros de Favonius";
+        Q25.resposta2 = "A Confraria da Luz";
+        Q25.resposta3 = "A Guilda dos Aventureiros";
+        Q25.resposta4 = "Exploradores";
+        Q25.resposta5 = "A Ordem dos Guardiões";
+        Q25.respostaCorreta = 3;
+        Q25.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5);
+        ListaQuestao.Add(Q25);
+        
+        var Q26 = new Questao();
+        Q26.Nivel = 3;
+        Q26.pergunta = "Qual personagem é conhecido por sua habilidade em Culinária?";
+        Q26.resposta1 = "Kokomi";
+        Q26.resposta2 = "Raiden Shogun";
+        Q26.resposta3 = "Amber";
+        Q26.resposta4 = "Xiangling ";
+        Q26.resposta5 = "Albedo";
+        Q26.respostaCorreta = 4;
+        Q26.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5);
+        ListaQuestao.Add(Q26);
+
+        var Q27 = new Questao();
+        Q27.Nivel = 3;
+        Q27.pergunta = "Qual é o elemento de Alhaitham?";
+        Q27.resposta1 = "Dendro";
+        Q27.resposta2 = "Anemom";
+        Q27.resposta3 = "Electro";
+        Q27.resposta4 = "Cryo";
+        Q27.resposta5 = "Geo";
+        Q27.respostaCorreta = 1;
+        Q27.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5);
+        ListaQuestao.Add(Q27);
+
+        var Q22 = new Questao();
+        Q22.Nivel = 3;
+        Q22.pergunta = "Quem é o Agente Fatui que aparece em Mondstadt?";
+        Q22.resposta1 = "Childe";
+        Q22.resposta2 = "Scaramouche";
+        Q22.resposta3 = "Dottore";
+        Q22.resposta4 = "Capitano";
+        Q22.resposta5 = "Signora";
+        Q22.respostaCorreta = 1;
+        Q22.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5);
+        ListaQuestao.Add(Q22);
+
+        var Q22 = new Questao();
+        Q22.Nivel = 3;
+        Q22.pergunta = "Oque significa Ad Astra Abyssosque?";
+        Q22.resposta1 = "Para as estrelas e o abismo";
+        Q22.resposta2 = "Ao infinito e além";
+        Q22.resposta3 = "dinheiro acima de tudo";
+        Q22.resposta4 = "Eu sempre volto";
+        Q22.resposta5 = "manteiga na manteiga";
+        Q22.respostaCorreta = 1;
+        Q22.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5);
+        ListaQuestao.Add(Q22);
+
+        var Q22 = new Questao();
+        Q22.Nivel = 3;
+        Q22.pergunta = "Oque significa Ad Astra Abyssosque?";
+        Q22.resposta1 = "Para as estrelas e o abismo";
+        Q22.resposta2 = "Ao infinito e além";
+        Q22.resposta3 = "dinheiro acima de tudo";
+        Q22.resposta4 = "Eu sempre volto";
+        Q22.resposta5 = "manteiga na manteiga";
+        Q22.respostaCorreta = 1;
+        Q22.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5);
+        ListaQuestao.Add(Q22);
+
+        var Q22 = new Questao();
+        Q22.Nivel = 3;
+        Q22.pergunta = "Oque significa Ad Astra Abyssosque?";
+        Q22.resposta1 = "Para as estrelas e o abismo";
+        Q22.resposta2 = "Ao infinito e além";
+        Q22.resposta3 = "dinheiro acima de tudo";
+        Q22.resposta4 = "Eu sempre volto";
+        Q22.resposta5 = "manteiga na manteiga";
+        Q22.respostaCorreta = 1;
+        Q22.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5);
+        ListaQuestao.Add(Q22);
+
+        var Q22 = new Questao();
+        Q22.Nivel = 3;
+        Q22.pergunta = "Oque significa Ad Astra Abyssosque?";
+        Q22.resposta1 = "Para as estrelas e o abismo";
+        Q22.resposta2 = "Ao infinito e além";
+        Q22.resposta3 = "dinheiro acima de tudo";
+        Q22.resposta4 = "Eu sempre volto";
+        Q22.resposta5 = "manteiga na manteiga";
+        Q22.respostaCorreta = 1;
+        Q22.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5);
+        ListaQuestao.Add(Q22);
+
+        var Q22 = new Questao();
+        Q22.Nivel = 3;
+        Q22.pergunta = "Oque significa Ad Astra Abyssosque?";
+        Q22.resposta1 = "Para as estrelas e o abismo";
+        Q22.resposta2 = "Ao infinito e além";
+        Q22.resposta3 = "dinheiro acima de tudo";
+        Q22.resposta4 = "Eu sempre volto";
+        Q22.resposta5 = "manteiga na manteiga";
+        Q22.respostaCorreta = 1;
+        Q22.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5);
+        ListaQuestao.Add(Q22);
+
+        var Q22 = new Questao();
+        Q22.Nivel = 3;
+        Q22.pergunta = "Oque significa Ad Astra Abyssosque?";
+        Q22.resposta1 = "Para as estrelas e o abismo";
+        Q22.resposta2 = "Ao infinito e além";
+        Q22.resposta3 = "dinheiro acima de tudo";
+        Q22.resposta4 = "Eu sempre volto";
+        Q22.resposta5 = "manteiga na manteiga";
+        Q22.respostaCorreta = 1;
+        Q22.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5);
+        ListaQuestao.Add(Q22);
+
+        var Q22 = new Questao();
+        Q22.Nivel = 3;
+        Q22.pergunta = "Oque significa Ad Astra Abyssosque?";
+        Q22.resposta1 = "Para as estrelas e o abismo";
+        Q22.resposta2 = "Ao infinito e além";
+        Q22.resposta3 = "dinheiro acima de tudo";
+        Q22.resposta4 = "Eu sempre volto";
+        Q22.resposta5 = "manteiga na manteiga";
+        Q22.respostaCorreta = 1;
+        Q22.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5);
+        ListaQuestao.Add(Q22);
+
+        var Q22 = new Questao();
+        Q22.Nivel = 3;
+        Q22.pergunta = "Oque significa Ad Astra Abyssosque?";
+        Q22.resposta1 = "Para as estrelas e o abismo";
+        Q22.resposta2 = "Ao infinito e além";
+        Q22.resposta3 = "dinheiro acima de tudo";
+        Q22.resposta4 = "Eu sempre volto";
+        Q22.resposta5 = "manteiga na manteiga";
+        Q22.respostaCorreta = 1;
+        Q22.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5);
+        ListaQuestao.Add(Q22);
 
     }
 
