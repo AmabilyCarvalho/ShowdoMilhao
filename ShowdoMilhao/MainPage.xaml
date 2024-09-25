@@ -22,6 +22,7 @@
                        TextColor="#ffe591"
                        HorizontalOptions="Center"
                        VerticalOptions="Center"/>
+      
             </Frame>
 
             <Button Text="Resposta 1"
@@ -72,6 +73,18 @@
                         TextColor="#ffe591"
                         Grid.Column="2"
                         BackgroundColor="#f8a23b"/>
+
+                <Label Text="Texto de pergunta"
+                       x:Name="labelPontuacao"
+                       TextColor="#ffe591"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center"/>
+
+                <Label Text="Texto de pergunta"
+                       x:Name="labelNivel"
+                       TextColor="#ffe591"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center"/> 
             </Grid>
 
         </StackLayout>

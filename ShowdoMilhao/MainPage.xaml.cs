@@ -7,7 +7,7 @@
         public MainPage()
         {
             InitializeComponent();
-            gerenciador = new Gerenciador( labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5);
+            gerenciador = new Gerenciador( labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5, labelPontuacao, labelNivel);
             gerenciador.ProximaPergunta();
         }
 

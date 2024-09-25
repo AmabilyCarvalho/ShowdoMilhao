@@ -7,18 +7,42 @@ public class Gerenciador
     List<Questao> ListaQuestao = new List<Questao>();
     List<int> ListaQuestoesRespondidas = new List<int>();
     Questao questaoCorrente;
+    
+    Label labelPontuacao;
+    Label labelNivel;
+    int Pontuacao;
 
     public int Pontuação { get; private set; }
     int NivelAtual = 0;
+    private Label labelPergunta;
+    private Button buttonResposta1;
+    private Button buttonResposta2;
+    private Button buttonResposta3;
+    private Button buttonResposta4;
+    private Button buttonResposta5;
+
     void Inicializar()
     {
         Pontuação = 0;
         NivelAtual = 0;
         ProximaPergunta();
     }
-    public Gerenciador(Label labelPergunta, Button buttonResposta1, Button buttonResposta2, Button buttonResposta3, Button buttonResposta4, Button buttonResposta5)
+    public Gerenciador(Label labelPergunta, Button buttonResposta1, Button buttonResposta2, Button buttonResposta3, Button buttonResposta4, Button buttonResposta5,Label labelPontuacao, Label labelNivel)
+
     {
         CriarQuestoes(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5);
+        this.labelPontuacao = labelPontuacao;
+        this.labelNivel = labelNivel;
+    }
+
+    public Gerenciador(Label labelPergunta, Button buttonResposta1, Button buttonResposta2, Button buttonResposta3, Button buttonResposta4, Button buttonResposta5)
+    {
+        this.labelPergunta = labelPergunta;
+        this.buttonResposta1 = buttonResposta1;
+        this.buttonResposta2 = buttonResposta2;
+        this.buttonResposta3 = buttonResposta3;
+        this.buttonResposta4 = buttonResposta4;
+        this.buttonResposta5 = buttonResposta5;
     }
 
     public void ProximaPergunta()
@@ -349,7 +373,7 @@ public class Gerenciador
 
         var Q27 = new Questao();
         Q27.Nivel = 3;
-        Q27.pergunta = "Qual é o elemento de Alhaitham?";
+        Q27.pergunta = "Qual é o elemento do Alhaitham?";
         Q27.resposta1 = "Dendro";
         Q27.resposta2 = "Anemom";
         Q27.resposta3 = "Electro";
@@ -359,113 +383,161 @@ public class Gerenciador
         Q27.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5);
         ListaQuestao.Add(Q27);
 
-        var Q22 = new Questao();
-        Q22.Nivel = 3;
-        Q22.pergunta = "Quem é o Agente Fatui que aparece em Mondstadt?";
-        Q22.resposta1 = "Childe";
-        Q22.resposta2 = "Scaramouche";
-        Q22.resposta3 = "Dottore";
-        Q22.resposta4 = "Capitano";
-        Q22.resposta5 = "Signora";
-        Q22.respostaCorreta = 1;
-        Q22.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5);
-        ListaQuestao.Add(Q22);
+        var Q28 = new Questao();
+        Q28.Nivel = 3;
+        Q28.pergunta = "Quem é o Agente Fatui que aparece em Mondstadt?";
+        Q28.resposta1 = "Columbina";
+        Q28.resposta2 = "Scaramouche";
+        Q28.resposta3 = "Dottore";
+        Q28.resposta4 = "Capitano";
+        Q28.resposta5 = "Signora";
+        Q28.respostaCorreta = 5;
+        Q28.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5);
+        ListaQuestao.Add(Q28);
 
-        var Q22 = new Questao();
-        Q22.Nivel = 3;
-        Q22.pergunta = "Oque significa Ad Astra Abyssosque?";
-        Q22.resposta1 = "Para as estrelas e o abismo";
-        Q22.resposta2 = "Ao infinito e além";
-        Q22.resposta3 = "dinheiro acima de tudo";
-        Q22.resposta4 = "Eu sempre volto";
-        Q22.resposta5 = "manteiga na manteiga";
-        Q22.respostaCorreta = 1;
-        Q22.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5);
-        ListaQuestao.Add(Q22);
+        var Q29 = new Questao();
+        Q29.Nivel = 3;
+        Q29.pergunta = "Qual é a cidade onde os comerciantes mais ricos se reúnem?";
+        Q29.resposta1 = "Mondstadt";
+        Q29.resposta2 = "Liyue";
+        Q29.resposta3 = "Inazuma";
+        Q29.resposta4 = "Sumeru";
+        Q29.resposta5 = "Fontaine";
+        Q29.respostaCorreta = 2;
+        Q29.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5);
+        ListaQuestao.Add(Q29);
 
-        var Q22 = new Questao();
-        Q22.Nivel = 3;
-        Q22.pergunta = "Oque significa Ad Astra Abyssosque?";
-        Q22.resposta1 = "Para as estrelas e o abismo";
-        Q22.resposta2 = "Ao infinito e além";
-        Q22.resposta3 = "dinheiro acima de tudo";
-        Q22.resposta4 = "Eu sempre volto";
-        Q22.resposta5 = "manteiga na manteiga";
-        Q22.respostaCorreta = 1;
-        Q22.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5);
-        ListaQuestao.Add(Q22);
+        var Q30 = new Questao();
+        Q30.Nivel = 4;
+        Q30.pergunta = "Qual é a cor do cabelo de Lisa?";
+        Q30.resposta1 = "Roxo";
+        Q30.resposta2 = "Loiro";
+        Q30.resposta3 = "Castanho";
+        Q30.resposta4 = "Verde";
+        Q30.resposta5 = "Preto";
+        Q30.respostaCorreta = 3;
+        Q30.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5);
+        ListaQuestao.Add(Q30);
 
-        var Q22 = new Questao();
-        Q22.Nivel = 3;
-        Q22.pergunta = "Oque significa Ad Astra Abyssosque?";
-        Q22.resposta1 = "Para as estrelas e o abismo";
-        Q22.resposta2 = "Ao infinito e além";
-        Q22.resposta3 = "dinheiro acima de tudo";
-        Q22.resposta4 = "Eu sempre volto";
-        Q22.resposta5 = "manteiga na manteiga";
-        Q22.respostaCorreta = 1;
-        Q22.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5);
-        ListaQuestao.Add(Q22);
+        var Q31 = new Questao();
+        Q31.Nivel = 4;
+        Q31.pergunta = "Qual é o nome do pet de Klee?";
+        Q31.resposta1 = "Dodoco";
+        Q31.resposta2 = "Lupus Boreas";
+        Q31.resposta3 = "Oz";
+        Q31.resposta4 = "Kaeya";
+        Q31.resposta5 = "Paimon";
+        Q31.respostaCorreta = 1;
+        Q31.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5);
+        ListaQuestao.Add(Q31);
 
-        var Q22 = new Questao();
-        Q22.Nivel = 3;
-        Q22.pergunta = "Oque significa Ad Astra Abyssosque?";
-        Q22.resposta1 = "Para as estrelas e o abismo";
-        Q22.resposta2 = "Ao infinito e além";
-        Q22.resposta3 = "dinheiro acima de tudo";
-        Q22.resposta4 = "Eu sempre volto";
-        Q22.resposta5 = "manteiga na manteiga";
-        Q22.respostaCorreta = 1;
-        Q22.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5);
-        ListaQuestao.Add(Q22);
+        var Q32 = new Questao();
+        Q32.Nivel = 4;
+        Q32.pergunta = "Qual é a cidade que tem um festival de lanternas?";
+        Q32.resposta1 = "Sumeru";
+        Q32.resposta2 = "Inazuma";
+        Q32.resposta3 = "Liyue";
+        Q32.resposta4 = "Mondstadt";
+        Q32.resposta5 = "Fontaine";
+        Q32.respostaCorreta = 3;
+        Q32.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5);
+        ListaQuestao.Add(Q32);
 
-        var Q22 = new Questao();
-        Q22.Nivel = 3;
-        Q22.pergunta = "Oque significa Ad Astra Abyssosque?";
-        Q22.resposta1 = "Para as estrelas e o abismo";
-        Q22.resposta2 = "Ao infinito e além";
-        Q22.resposta3 = "dinheiro acima de tudo";
-        Q22.resposta4 = "Eu sempre volto";
-        Q22.resposta5 = "manteiga na manteiga";
-        Q22.respostaCorreta = 1;
-        Q22.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5);
-        ListaQuestao.Add(Q22);
+        var Q33 = new Questao();
+        Q33.Nivel = 4;
+        Q33.pergunta = "Qual personagem tem um estilo de luta baseado em danças?";
+        Q33.resposta1 = "Dori";
+        Q33.resposta2 = "Amber";
+        Q33.resposta3 = "Lynette";
+        Q33.resposta4 = "Nilou";
+        Q33.resposta5 = "Kuki Shinobu";
+        Q33.respostaCorreta = 4;
+        Q33.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5);
+        ListaQuestao.Add(Q33);
 
-        var Q22 = new Questao();
-        Q22.Nivel = 3;
-        Q22.pergunta = "Oque significa Ad Astra Abyssosque?";
-        Q22.resposta1 = "Para as estrelas e o abismo";
-        Q22.resposta2 = "Ao infinito e além";
-        Q22.resposta3 = "dinheiro acima de tudo";
-        Q22.resposta4 = "Eu sempre volto";
-        Q22.resposta5 = "manteiga na manteiga";
-        Q22.respostaCorreta = 1;
-        Q22.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5);
-        ListaQuestao.Add(Q22);
+        var Q34 = new Questao();
+        Q34.Nivel = 4;
+        Q34.pergunta = "Qual é o tipo de arma que utiliza o personagem Childe?";
+        Q34.resposta1 = "Lança";
+        Q34.resposta2 = "Adaga";
+        Q34.resposta3 = "Arco";
+        Q34.resposta4 = "Espada";
+        Q34.resposta5 = "manteiga na manteiga";
+        Q34.respostaCorreta = 3;
+        Q34.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5);
+        ListaQuestao.Add(Q34);
 
-        var Q22 = new Questao();
-        Q22.Nivel = 3;
-        Q22.pergunta = "Oque significa Ad Astra Abyssosque?";
-        Q22.resposta1 = "Para as estrelas e o abismo";
-        Q22.resposta2 = "Ao infinito e além";
-        Q22.resposta3 = "dinheiro acima de tudo";
-        Q22.resposta4 = "Eu sempre volto";
-        Q22.resposta5 = "manteiga na manteiga";
-        Q22.respostaCorreta = 1;
-        Q22.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5);
-        ListaQuestao.Add(Q22);
+        var Q35 = new Questao();
+        Q35.Nivel = 4;
+        Q35.pergunta = "Quem é o líder da gangue Arataki?";
+        Q35.resposta1 = "Itto";
+        Q35.resposta2 = "Kuki Shinobu";
+        Q35.resposta3 = "Ayato";
+        Q35.resposta4 = "Gorou";
+        Q35.resposta5 = "Yae Miko";
+        Q35.respostaCorreta = 1;
+        Q35.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5);
+        ListaQuestao.Add(Q35);
 
-        var Q22 = new Questao();
-        Q22.Nivel = 3;
-        Q22.pergunta = "Oque significa Ad Astra Abyssosque?";
-        Q22.resposta1 = "Para as estrelas e o abismo";
-        Q22.resposta2 = "Ao infinito e além";
-        Q22.resposta3 = "dinheiro acima de tudo";
-        Q22.resposta4 = "Eu sempre volto";
-        Q22.resposta5 = "manteiga na manteiga";
-        Q22.respostaCorreta = 1;
-        Q22.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5);
-        ListaQuestao.Add(Q22);
+        var Q36 = new Questao();
+        Q36.Nivel = 4;
+        Q36.pergunta = "Qual é a cidade famosa por sua música?";
+        Q36.resposta1 = "Natlan";
+        Q36.resposta2 = "Inazuma";
+        Q36.resposta3 = "Sumeru";
+        Q36.resposta4 = "Mondstad";
+        Q36.resposta5 = "Fontaine";
+        Q36.respostaCorreta = 4;
+        Q36.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5);
+        ListaQuestao.Add(Q36);
+
+        var Q37 = new Questao();
+        Q37.Nivel = 4;
+        Q37.pergunta = "Qual é o tipo de arma que utiliza a personagem Yae Miko?";
+        Q37.resposta1 = "Espadão";
+        Q37.resposta2 = "Lança";
+        Q37.resposta3 = "Espada";
+        Q37.resposta4 = "Arco";
+        Q37.resposta5 = "Catalisador ";
+        Q37.respostaCorreta = 5;
+        Q37.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5);
+        ListaQuestao.Add(Q37);
+
+        var Q38 = new Questao();
+        Q38.Nivel = 4;
+        Q38.pergunta = "Qual o nome da habilidade elemental da Yelan";
+        Q38.resposta1 = "Rede da Vida Salvadora";
+        Q38.resposta2 = "Tempestade do Mar";
+        Q38.resposta3 = "Dança do Gelo";
+        Q38.resposta4 = "Golpe de Cristal";
+        Q38.resposta5 = "Sopro do Oceano";
+        Q38.respostaCorreta = 1;
+        Q38.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5);
+        ListaQuestao.Add(Q38);
+
+        var Q39 = new Questao();
+        Q39.Nivel = 4;
+        Q39.pergunta = "Qual o nome da habilidade elemental da Qiqi";
+        Q39.resposta1 = "Tempestade do Raio";
+        Q39.resposta2 = "Arte do Adeptus: Arauto da Floresta";
+        Q39.resposta3 = "Dança do Gelo";
+        Q39.resposta4 = "Chamas do Destino";
+        Q39.resposta5 = "Barreira Flamejante";
+        Q39.respostaCorreta = 2;
+        Q39.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5);
+        ListaQuestao.Add(Q39);
+
+        var Q40 = new Questao();
+        Q40.Nivel = 5;
+        Q40.pergunta = "Party System";
+        Q40.resposta1 = "Tempestade do Raio";
+        Q40.resposta2 = "Team Play";
+        Q40.resposta3 = "Multiplayer";
+        Q40.resposta4 = "Cooperative";
+        Q40.resposta5 = "Humilhation";
+        Q40.respostaCorreta = 3;
+        Q40.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5);
+        ListaQuestao.Add(Q40);
 
     }
 
@@ -474,6 +546,8 @@ public class Gerenciador
         if (questaoCorrente!.VerifiicarResposta(resposta))
         {
             await Task.Delay(1000);
+            labelPontuacao.Text = "Pontuação:R$" + Pontuacao.ToString();
+            labelNivel.Text = "Nivel" + NivelAtual.ToString();
             AdicionarPontuacao(NivelAtual);
             NivelAtual++;
             ProximaPergunta();
