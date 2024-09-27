@@ -9,11 +9,32 @@
         <StackLayout Padding="10"
                 Spacing="10">
 
-
             <Image Source="alien.png"
                    HorizontalOptions="Center"
                    VerticalOptions="Center"
                    HeightRequest="235"/>
+
+                <Grid ColumnSpacing="10">
+                <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Label Text="Pontuação: R$0"
+                       x:Name="labelPontuacao"
+                       TextColor="#ffe591"
+                       HorizontalOptions="Center"
+                       Grid.Column="0"
+                       VerticalOptions="Start"/>
+
+                <Label Text="Nível: 0"
+                       x:Name="labelNivel"
+                       TextColor="#ffe591"
+                       HorizontalOptions="Center"
+                       Grid.Column="1"
+                       VerticalOptions="Start"/>
+
+                </Grid>
 
             <Frame HeightRequest="100"
                     BackgroundColor="#70caca">
@@ -74,17 +95,7 @@
                         Grid.Column="2"
                         BackgroundColor="#f8a23b"/>
 
-                <Label Text="Texto de pergunta"
-                       x:Name="labelPontuacao"
-                       TextColor="#ffe591"
-                       HorizontalOptions="Center"
-                       VerticalOptions="Center"/>
-
-                <Label Text="Texto de pergunta"
-                       x:Name="labelNivel"
-                       TextColor="#ffe591"
-                       HorizontalOptions="Center"
-                       VerticalOptions="Center"/> 
+                  
             </Grid>
 
         </StackLayout>

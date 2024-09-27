@@ -23,6 +23,8 @@ public class Gerenciador
 
     void Inicializar()
     {
+
+    labelpontuação.Text =
         Pontuação = 0;
         NivelAtual = 0;
         ProximaPergunta();
@@ -49,7 +51,7 @@ public class Gerenciador
     {
         var numRandomico = Random.Shared.Next(0, ListaQuestao.Count - 1);
         while (ListaQuestoesRespondidas.Contains(numRandomico))
-            numRandomico = Random.Shared.Next(0, ListaQuestoesRespondidas.Count - 1);
+        numRandomico = Random.Shared.Next(0, ListaQuestoesRespondidas.Count - 1);
         ListaQuestoesRespondidas.Add(numRandomico);
         questaoCorrente = ListaQuestao[numRandomico];
         questaoCorrente.Desenhar();
@@ -554,7 +556,7 @@ public class Gerenciador
         }
         else
         {
-            await App.Current.MainPage.DisplayAlert("fim de jogo", "você é ruim de mais pra continuar", "Tentar Novamente");
+            await App.Current.MainPage.DisplayAlert("fim de jogo", "você é ruim de mais pra continuar", "Deseja tentar Novamente?");
             Inicializar();
         }
         void AdicionarPontuacao (int n)
