@@ -1,6 +1,6 @@
 namespace ShowdoMilhao;
 
-public class Questao
+public class Questao : IEquatable<Questao>
 {
 
     public string pergunta;
@@ -51,6 +51,11 @@ public class Questao
         this.buttonResposta5!.BackgroundColor = Color.FromArgb("#ffe591");
         this.buttonResposta5!.TextColor = Color.FromArgb("#f8a23b");
 
+
+    }
+    public bool Equals(Questao q)
+    {
+        return this.Nivel == q.Nivel && this.pergunta == q.pergunta;
     }
 
     private Button buttonEscolhido(int respostaEscolhida)

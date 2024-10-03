@@ -5,57 +5,91 @@ namespace ShowdoMilhao;
 public class Gerenciador
 {
     List<Questao> ListaQuestao = new List<Questao>();
-    List<int> ListaQuestoesRespondidas = new List<int>();
-    Questao questaoCorrente;
+    List<Questao> ListaTodasQuestoesRespondidas = new List<Questao>();
+    public Questao questaoCorrente;
 
     Label labelPontuacao;
     Label labelNivel;
     int Pontuacao;
 
     public int Pontuação { get; private set; }
-    int NivelAtual = 0;
-    private Label labelPergunta;
-    private Button buttonResposta1;
-    private Button buttonResposta2;
-    private Button buttonResposta3;
-    private Button buttonResposta4;
-    private Button buttonResposta5;
+    int NivelAtual = 1;
 
     void Inicializar()
     {
 
         labelPontuacao.Text = "Pontuacao: R$" + Pontuacao.ToString();
-        labelNivel.Text = "Nivel:" + NivelAtual.ToString();
+        labelNivel.Text = "Nivel: " + NivelAtual.ToString();
         Pontuação = 0;
-        NivelAtual = 0;
-        ListaQuestoesRespondidas.Clear();
+        NivelAtual = 1;
+        ListaTodasQuestoesRespondidas.Clear();
         ProximaPergunta();
     }
-    public Gerenciador(Label labelPergunta, Button buttonResposta1, Button buttonResposta2, Button buttonResposta3, Button buttonResposta4, Button buttonResposta5, Label labelPontuacao, Label labelNivel)
-
+    public Gerenciador(Label labelPergunta, Button buttonResposta1, Button buttonResposta2, Button buttonResposta3, Button buttonResposta4, Button buttonResposta5, Label labelPont, Label labelNivel)
     {
         CriarQuestoes(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5);
-        this.labelPontuacao = labelPontuacao;
+        labelPontuacao = labelPont;
         this.labelNivel = labelNivel;
     }
 
-    public Gerenciador(Label labelPergunta, Button buttonResposta1, Button buttonResposta2, Button buttonResposta3, Button buttonResposta4, Button buttonResposta5)
+    public async void VerificaCorreto(int resposta)
     {
-        this.labelPergunta = labelPergunta;
-        this.buttonResposta1 = buttonResposta1;
-        this.buttonResposta2 = buttonResposta2;
-        this.buttonResposta3 = buttonResposta3;
-        this.buttonResposta4 = buttonResposta4;
-        this.buttonResposta5 = buttonResposta5;
+        if (questaoCorrente!.VerifiicarResposta(resposta))
+        {
+            await Task.Delay(1000);
+            AdicionaPontuacao(NivelAtual);
+            NivelAtual++;
+            ProximaPergunta();
+            labelPontuacao.Text = "Pontuação: R$" + Pontuacao.ToString();
+            labelNivel.Text = "Nivel: " + NivelAtual.ToString();
+        }
+        else
+        {
+            await App.Current.MainPage.DisplayAlert("fim de jogo", "você é ruim de mais pra continuar", "Deseja tentar Novamente?");
+            Inicializar();
+        }
+    }
+
+
+    void AdicionaPontuacao(int CriaPontuacao)
+    {
+        if (CriaPontuacao == 1)
+            Pontuacao = 1000;
+        else if (CriaPontuacao == 2)
+            Pontuacao = 2000;
+        else if (CriaPontuacao == 3)
+            Pontuacao = 5000;
+        else if (CriaPontuacao == 4)
+            Pontuacao = 10000;
+        else if (CriaPontuacao == 5)
+            Pontuacao = 20000;
+        else if (CriaPontuacao == 6)
+            Pontuacao = 50000;
+        else if (CriaPontuacao == 7)
+            Pontuacao = 100000;
+        else if (CriaPontuacao == 8)
+            Pontuacao = 200000;
+        else if (CriaPontuacao == 9)
+            Pontuacao = 500000;
+        else
+            Pontuacao = 1000000;
     }
 
     public void ProximaPergunta()
     {
-        var numRandomico = Random.Shared.Next(0, ListaQuestao.Count - 1);
-        while (ListaQuestoesRespondidas.Contains(numRandomico))
-            numRandomico = Random.Shared.Next(0, ListaQuestoesRespondidas.Count - 1);
-        ListaQuestoesRespondidas.Add(numRandomico);
-        questaoCorrente = ListaQuestao[numRandomico];
+        var ListaQuestoes = ListaQuestao.Where(d => d.Nivel == NivelAtual).ToList();
+        var numRandomico = Random.Shared.Next(0, ListaQuestoes.Count - 1);
+
+        questaoCorrente = ListaQuestoes[numRandomico];
+
+        while (ListaTodasQuestoesRespondidas.Contains(questaoCorrente))
+        {
+            numRandomico = Random.Shared.Next(0, ListaQuestoes.Count - 1);
+            questaoCorrente = ListaQuestoes[numRandomico];
+        }
+
+        ListaTodasQuestoesRespondidas.Add(questaoCorrente);
+
         questaoCorrente.Desenhar();
     }
 
@@ -831,28 +865,440 @@ public class Gerenciador
         Q64.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5);
         ListaQuestao.Add(Q64);
 
-    }
+        var Q65 = new Questao();
+        Q65.Nivel = 7;
+        Q65.pergunta = "Qual é o papel de Lisa na Guilda dos Aventureiros?";
+        Q65.resposta1 = "Líder";
+        Q65.resposta2 = "Escritor";
+        Q65.resposta3 = "Caçadora";
+        Q65.resposta4 = "Bibliotecária";
+        Q65.resposta5 = "Guia espiritual";
+        Q65.respostaCorreta = 4;
+        Q65.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5);
+        ListaQuestao.Add(Q65);
 
-    public async void VerificaCorreto(int resposta)
-    {
-        if (questaoCorrente!.VerifiicarResposta(resposta))
-        {
-            await Task.Delay(1000);
-            labelPontuacao.Text = "Pontuação:R$" + Pontuacao.ToString();
-            labelNivel.Text = "Nivel" + NivelAtual.ToString();
-            AdicionarPontuacao(NivelAtual);
-            NivelAtual++;
-            ProximaPergunta();
-        }
-        else
-        {
-            await App.Current.MainPage.DisplayAlert("fim de jogo", "você é ruim de mais pra continuar", "Deseja tentar Novamente?");
-            Inicializar();
-        }
-        void AdicionarPontuacao(int n)
-        {
+        var Q66 = new Questao();
+        Q66.Nivel = 7;
+        Q66.pergunta = "Qual animail o Oz é ";
+        Q66.resposta1 = "Urso";
+        Q66.resposta2 = "Cachorro";
+        Q66.resposta3 = "Gato";
+        Q66.resposta4 = "Coelho";
+        Q66.resposta5 = "Corvo";
+        Q66.respostaCorreta = 3;
+        Q66.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5);
+        ListaQuestao.Add(Q66);
 
-        }
+        var Q67 = new Questao();
+        Q67.Nivel = 7;
+        Q67.pergunta = "Qual é o título de Childe?";
+        Q67.resposta1 = "O Príncipe";
+        Q67.resposta2 = "Comerciante";
+        Q67.resposta3 = "O 11º dos Fatui";
+        Q67.resposta4 = "O Mercenário";
+        Q67.resposta5 = "O Eleito";
+        Q67.respostaCorreta = 3;
+        Q67.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5);
+        ListaQuestao.Add(Q67);
+
+        var Q68 = new Questao();
+        Q68.Nivel = 7;
+        Q68.pergunta = "Qual a cidade destruida pelos arcontes?";
+        Q68.resposta1 = "Texas";
+        Q68.resposta2 = "Khaenri'ah";
+        Q68.resposta3 = "Pintópolis";
+        Q68.resposta4 = "Kannazuka";
+        Q68.resposta5 = "Enkanomiya";
+        Q68.respostaCorreta = 2;
+        Q68.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5);
+        ListaQuestao.Add(Q68);
+
+        var Q69 = new Questao();
+        Q69.Nivel = 7;
+        Q69.pergunta = "Qual o fatui q morreu em Inazuma";
+        Q69.resposta1 = "Capitano";
+        Q69.resposta2 = "Pierro";
+        Q69.resposta3 = "Pantalone";
+        Q69.resposta4 = "Columbina";
+        Q69.resposta5 = "Signora";
+        Q69.respostaCorreta = 1;
+        Q69.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5);
+        ListaQuestao.Add(Q69);
+
+        var Q70 = new Questao();
+        Q70.Nivel = 8;
+        Q70.pergunta = "Qual é a relação entre Ayaka e Kamisato Ayato?";
+        Q70.resposta1 = "Mentor e aprendiz";
+        Q70.resposta2 = "Colegas";
+        Q70.resposta3 = "Rivais";
+        Q70.resposta4 = "Amigos";
+        Q70.resposta5 = "Irmãos ";
+        Q70.respostaCorreta = 5;
+        Q70.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5);
+        ListaQuestao.Add(Q70);
+
+        var Q71 = new Questao();
+        Q71.Nivel = 8;
+        Q71.pergunta = "Qual é a cidade natal de Ayato?";
+        Q71.resposta1 = "Mondstadt";
+        Q71.resposta2 = "Inazuma";
+        Q71.resposta3 = "Sumeru";
+        Q71.resposta4 = "Fontaine";
+        Q71.resposta5 = "Liyue";
+        Q71.respostaCorreta = 2;
+        Q71.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5);
+        ListaQuestao.Add(Q71);
+
+        var Q72 = new Questao();
+        Q72.Nivel = 8;
+        Q72.pergunta = "Qual é o animal que voa na ult do Diluc?";
+        Q72.resposta1 = "Papagaio";
+        Q72.resposta2 = "Coruja";
+        Q72.resposta3 = "Fenix";
+        Q72.resposta4 = "Corvo";
+        Q72.resposta5 = "Águia";
+        Q72.respostaCorreta = 2;
+        Q72.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5);
+        ListaQuestao.Add(Q72);
+
+        var Q73 = new Questao();
+        Q73.Nivel = 8;
+        Q73.pergunta = "Em qual tipo de monstro os arcontes são inspirados?";
+        Q73.resposta1 = "Dragartos";
+        Q73.resposta2 = "Cogumelos";
+        Q73.resposta3 = "Slimes";
+        Q73.resposta4 = "Flor gigante";
+        Q73.resposta5 = "Foquinha Rotunda";
+        Q73.respostaCorreta = 3;
+        Q73.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5);
+        ListaQuestao.Add(Q73);
+
+        var Q74 = new Questao();
+        Q74.Nivel = 8;
+        Q74.pergunta = "Qual é a cidade natal de Diona?";
+        Q74.resposta1 = "Sumeru";
+        Q74.resposta2 = "Liyue";
+        Q74.resposta3 = "Inazuma";
+        Q74.resposta4 = "Mondstadt ";
+        Q74.resposta5 = "Fontaine";
+        Q74.respostaCorreta = 4;
+        Q74.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5);
+        ListaQuestao.Add(Q74);
+
+        var Q75 = new Questao();
+        Q75.Nivel = 8;
+        Q75.pergunta = "Qual os insetos que o Itto usa em suas rinhas";
+        Q75.resposta1 = "Bosouros";
+        Q75.resposta2 = "Baratas";
+        Q75.resposta3 = "Joaninhas";
+        Q75.resposta4 = "Borboletas";
+        Q75.resposta5 = "Grilos";
+        Q75.respostaCorreta = 1;
+        Q75.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5);
+        ListaQuestao.Add(Q75);
+
+        var Q76 = new Questao();
+        Q76.Nivel = 8;
+        Q76.pergunta = "Qual o nome dos besouros do itto";
+        Q76.resposta1 = "Kamai Kenji";
+        Q76.resposta2 = "Onikuma";
+        Q76.resposta3 = "Escaravelho";
+        Q76.resposta4 = "Scaramouche";
+        Q76.resposta5 = "Onikabuto";
+        Q76.respostaCorreta = 5;
+        Q76.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5);
+        ListaQuestao.Add(Q76);
+
+        var Q77 = new Questao();
+        Q77.Nivel = 8;
+        Q77.pergunta = "Em qual região inazuma foi inspirada?";
+        Q77.resposta1 = "Canadá";
+        Q77.resposta2 = "México";
+        Q77.resposta3 = "Russia";
+        Q77.resposta4 = "Japão";
+        Q77.resposta5 = "China";
+        Q77.respostaCorreta = 4;
+        Q77.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5);
+        ListaQuestao.Add(Q77);
+
+        var Q78 = new Questao();
+        Q78.Nivel = 8;
+        Q78.pergunta = "Em qual região Liyue foi inspirada?";
+        Q78.resposta1 = "China";
+        Q78.resposta2 = "Coréia";
+        Q78.resposta3 = "Turquia";
+        Q78.resposta4 = "Brasil";
+        Q78.resposta5 = "Espanha";
+        Q78.respostaCorreta = 1;
+        Q78.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5);
+        ListaQuestao.Add(Q78);
+
+        var Q79 = new Questao();
+        Q79.Nivel = 8;
+        Q79.pergunta = "Em qual região Fontaine foi inspirada?";
+        Q79.resposta1 = "Noruega";
+        Q79.resposta2 = "França";
+        Q79.resposta3 = "Argentina";
+        Q79.resposta4 = "Puru";
+        Q79.resposta5 = "Bolivia";
+        Q79.respostaCorreta = 2;
+        Q79.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5);
+        ListaQuestao.Add(Q79);
+
+        var Q80 = new Questao();
+        Q80.Nivel = 8;
+        Q80.pergunta = "Em qual região Mondstadt foi inspirada?";
+        Q80.resposta1 = "Austrália";
+        Q80.resposta2 = "Irlanda";
+        Q80.resposta3 = "Venezuela";
+        Q80.resposta4 = "Alemanha";
+        Q80.resposta5 = "Irã";
+        Q80.respostaCorreta = 4;
+        Q80.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5);
+        ListaQuestao.Add(Q80);
+
+        var Q81 = new Questao();
+        Q81.Nivel = 9;
+        Q81.pergunta = "Qual é a relação entre Kazuha e Beidou?";
+        Q81.resposta1 = "Mestre e aprendiz";
+        Q81.resposta2 = "Rivais";
+        Q81.resposta3 = "Amigos";
+        Q81.resposta4 = "Companheiros de viagem";
+        Q81.resposta5 = "Irmãos";
+        Q81.respostaCorreta = 3;
+        Q81.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5);
+        ListaQuestao.Add(Q81);
+
+        var Q82 = new Questao();
+        Q82.Nivel = 9;
+        Q82.pergunta = "Em qual região Sumeru foi inspirada?";
+        Q82.resposta1 = "Namíbia";
+        Q82.resposta2 = "Índia";
+        Q82.resposta3 = "Jamaica";
+        Q82.resposta4 = "Afeganistão";
+        Q82.resposta5 = "Haiti";
+        Q82.respostaCorreta = 2;
+        Q82.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5);
+        ListaQuestao.Add(Q82);
+
+        var Q83 = new Questao();
+        Q83.Nivel = 9;
+        Q83.pergunta = "Qual é a habilidade suprema de Ganyu?";
+        Q83.resposta1 = "Celestial Bow";
+        Q83.resposta2 = "Frosted Barrage";
+        Q83.resposta3 = "Lullaby of Frost";
+        Q83.resposta4 = "Ice Spirit";
+        Q83.resposta5 = "Cryo Nova";
+        Q83.respostaCorreta = 1;
+        Q83.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5);
+        ListaQuestao.Add(Q83);
+
+        var Q84 = new Questao();
+        Q84.Nivel = 9;
+        Q84.pergunta = "Qual é a cidade de origem de Lumine?";
+        Q84.resposta1 = "Mondstadt";
+        Q84.resposta2 = "Sumeru";
+        Q84.resposta3 = "Liyue";
+        Q84.resposta4 = "Inazuma";
+        Q84.resposta5 = "Desconhecida";
+        Q84.respostaCorreta = 5;
+        Q84.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5);
+        ListaQuestao.Add(Q84);
+
+        var Q85 = new Questao();
+        Q85.Nivel = 9;
+        Q85.pergunta = "Qual é o título de Hu Tao?";
+        Q85.resposta1 = "A Dama da Morte";
+        Q85.resposta2 = "A Guardiã da Luz";
+        Q85.resposta3 = "A Diretora da Casa de Guías**(Resposta correta)**";
+        Q85.resposta4 = "A Sombra do Vento";
+        Q85.resposta5 = "A Caçadora";
+        Q85.respostaCorreta = 3;
+        Q85.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5);
+        ListaQuestao.Add(Q85);
+
+        var Q86 = new Questao();
+        Q86.Nivel = 9;
+        Q86.pergunta = "Qual é a arma de Eula?";
+        Q86.resposta1 = "Espada grande **(Resposta correta)**";
+        Q86.resposta2 = "Lança";
+        Q86.resposta3 = "Arco";
+        Q86.resposta4 = "Catalisador";
+        Q86.resposta5 = "Espada";
+        Q86.respostaCorreta = 1;
+        Q86.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5);
+        ListaQuestao.Add(Q86);
+
+        var Q87 = new Questao();
+        Q87.Nivel = 9;
+        Q87.pergunta = "Quem é a Arconte de Inazuma?";
+        Q87.resposta1 = "Raiden Shogun **(Resposta correta)**";
+        Q87.resposta2 = "Venti";
+        Q87.resposta3 = "Zhongli";
+        Q87.resposta4 = "Albedo";
+        Q87.resposta5 = "Yae Miko";
+        Q87.respostaCorreta = 1;
+        Q87.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5);
+        ListaQuestao.Add(Q87);
+
+        var Q88 = new Questao();
+        Q88.Nivel = 9;
+        Q88.pergunta = "Qual é a especialidade de Thoma?";
+        Q88.resposta1 = "Curry **(Resposta correta)**";
+        Q88.resposta2 = "Pizza";
+        Q88.resposta3 = "Frutos do mar";
+        Q88.resposta4 = "Sopa";
+        Q88.resposta5 = "Salada";
+        Q88.respostaCorreta = 1;
+        Q88.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5);
+        ListaQuestao.Add(Q88);
+
+        var Q89 = new Questao();
+        Q89.Nivel = 9;
+        Q89.pergunta = "Qual é a habilidade elemental de Ningguang?";
+        Q89.resposta1 = "Jade Screen";
+        Q89.resposta2 = "Stonewall";
+        Q89.resposta3 = "Geo Shield **(Resposta correta)**";
+        Q89.resposta4 = "Crystal Shield";
+        Q89.resposta5 = "Earth Wall";
+        Q89.respostaCorreta = 1;
+        Q89.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5);
+        ListaQuestao.Add(Q89);
+
+        var Q90 = new Questao();
+        Q90.Nivel = 9;
+        Q90.pergunta = "Qual é a habilidade suprema de Ayaka?";
+        Q90.resposta1 = "Kamisato Art: Soumetsu **(Resposta correta)**";
+        Q90.resposta2 = "Kamisato Art: Hyouka";
+        Q90.resposta3 = "Kamisato Art: Hyouka";
+        Q90.resposta4 = "Kamisato Art: Kamifune";
+        Q90.resposta5 = "Kamisato Art: Shirou";
+        Q90.respostaCorreta = 1;
+        Q90.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5);
+        ListaQuestao.Add(Q90);
+
+        var Q91 = new Questao();
+        Q91.Nivel = 10;
+        Q91.pergunta = "Qual é o título de Mona?";
+        Q91.resposta1 = "A Astróloga **(Resposta correta)**";
+        Q91.resposta2 = "A Guerreira";
+        Q91.resposta3 = "A Curandeira";
+        Q91.resposta4 = "A Arqueóloga";
+        Q91.resposta5 = "A Mística";
+        Q91.respostaCorreta = 1;
+        Q91.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5);
+        ListaQuestao.Add(Q91);
+
+        var Q92 = new Questao();
+        Q92.Nivel = 10;
+        Q92.pergunta = "Qual é o papel de Alhaitham na história?";
+        Q92.resposta1 = "Místico";
+        Q92.resposta2 = "Defensor";
+        Q92.resposta3 = "Alquimista";
+        Q92.resposta4 = "Escritor **(Resposta correta)**";
+        Q92.resposta5 = "Chef";
+        Q92.respostaCorreta = 4;
+        Q92.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5);
+        ListaQuestao.Add(Q92);
+
+        var Q93 = new Questao();
+        Q93.Nivel = 10;
+        Q93.pergunta = "Quem é o deus da liberdade?";
+        Q93.resposta1 = "Zhongli";
+        Q93.resposta2 = "Venti **(Resposta correta)**";
+        Q93.resposta3 = "Raiden Shogun";
+        Q93.resposta4 = "Albedo";
+        Q93.resposta5 = "Nahida";
+        Q93.respostaCorreta = 2;
+        Q93.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5);
+        ListaQuestao.Add(Q93);
+
+        var Q94 = new Questao();
+        Q94.Nivel = 10;
+        Q94.pergunta = "Qual é a habilidade elemental de Fischl?";
+        Q94.resposta1 = "Ravenswings";
+        Q94.resposta2 = "Lightning Rose **(Resposta correta)**";
+        Q94.resposta3 = "Thunderbolt";
+        Q94.resposta4 = "Odin's Call";
+        Q94.resposta5 = "Shadow Strike";
+        Q94.respostaCorreta = 2;
+        Q94.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5);
+        ListaQuestao.Add(Q94);
+
+        var Q95 = new Questao();
+        Q95.Nivel = 10;
+        Q95.pergunta = "Qual é a especialidade de Diona?";
+        Q95.resposta1 = "Culinária de frutos do mar";
+        Q95.resposta2 = "Drinks";
+        Q95.resposta3 = "Sopas";
+        Q95.resposta4 = "Pães";
+        Q95.resposta5 = "Sobremesas";
+        Q95.respostaCorreta = 2;
+        Q95.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5);
+        ListaQuestao.Add(Q95);
+
+        var Q96 = new Questao();
+        Q96.Nivel = 10;
+        Q96.pergunta = "Qual é o papel de Keqing na administração de Liyue?";
+        Q96.resposta1 = "Representante do comércio";
+        Q96.resposta2 = "Arconte";
+        Q96.resposta3 = "Protetora **(Resposta correta)**";
+        Q96.resposta4 = "Alquimista";
+        Q96.resposta5 = "Chef";
+        Q96.respostaCorreta = 3;
+        Q96.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5);
+        ListaQuestao.Add(Q96);
+
+        var Q97 = new Questao();
+        Q97.Nivel = 10;
+        Q97.pergunta = "Qual é a arma usada por Yae Miko?";
+        Q97.resposta1 = "Catalisador **(Resposta correta)**";
+        Q97.resposta2 = "Espada";
+        Q97.resposta3 = "Arco";
+        Q97.resposta4 = "Lança";
+        Q97.resposta5 = "Grande espada";
+        Q97.respostaCorreta = 1;
+        Q97.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5);
+        ListaQuestao.Add(Q97);
+
+        var Q98 = new Questao();
+        Q98.Nivel = 10;
+        Q98.pergunta = "Qual é o elemento de Xiangling?";
+        Q98.resposta1 = "Cryo";
+        Q98.resposta2 = "Geo";
+        Q98.resposta3 = "Electro";
+        Q98.resposta4 = "Pyro **(Resposta correta)**";
+        Q98.resposta5 = "Anemo";
+        Q98.respostaCorreta = 4;
+        Q98.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5);
+        ListaQuestao.Add(Q98);
+
+        var Q99 = new Questao();
+        Q99.Nivel = 10;
+        Q99.pergunta = "Qual é a habilidade suprema de Albedo?";
+        Q99.resposta1 = "Chalk Prince **(Resposta correta)**";
+        Q99.resposta2 = "Flower of Eden";
+        Q99.resposta3 = "Geo Pulse";
+        Q99.resposta4 = "Divine Garden";
+        Q99.resposta5 = "Crystal Blast";
+        Q99.respostaCorreta = 1;
+        Q99.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5);
+        ListaQuestao.Add(Q99);
+
+        var Q100 = new Questao();
+        Q100.Nivel = 10;
+        Q100.pergunta = "Quem é conhecido como o 'Príncipe da Casa de Guías'?";
+        Q100.resposta1 = "Zhongli";
+        Q100.resposta2 = "Albedo";
+        Q100.resposta3 = "Tartaglia";
+        Q100.resposta4 = "Diluc";
+        Q100.resposta5 = "Kaeya";
+        Q100.respostaCorreta = 2;
+        Q100.ConfigurarEstruturaDesenho(labelPergunta, buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5);
+        ListaQuestao.Add(Q100);
+
+        ProximaPergunta();
+
     }
 
 
