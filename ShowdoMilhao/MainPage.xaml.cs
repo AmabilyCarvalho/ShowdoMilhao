@@ -39,16 +39,23 @@
        
         private void OnButton6Clicked(object sender, EventArgs e)
         {
-            
+            var ajuda = new RetiraErradas();
+            ajuda.ConfigurarEstruturaDesenho(buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5);
+            ajuda.RealizaAjuda(gerenciador.GetQuestaoCorrente());
+            buttonResposta6.IsVisible = false;
         }
 
         private void OnButton7Clicked(object sender, EventArgs e)
         {
-            
+            gerenciador.ProximaPergunta();
+            buttonResposta7.IsVisible = false;
         }
 
         private void OnButton8Clicked(object sender, EventArgs e)
         {
-            
+            var ajuda = new Viciados();
+            ajuda.ConfigurarEstruturaDesenho(buttonResposta1, buttonResposta2, buttonResposta3, buttonResposta4, buttonResposta5);
+            ajuda.RealizaAjuda(gerenciador.GetQuestaoCorrente());
+           buttonResposta8.IsVisible = false;
         }
     }

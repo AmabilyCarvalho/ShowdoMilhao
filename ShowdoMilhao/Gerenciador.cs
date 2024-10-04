@@ -15,6 +15,11 @@ public class Gerenciador
     public int Pontuação { get; private set; }
     int NivelAtual = 1;
 
+    public Questao GetQuestaoCorrente()
+    {
+        return questaoCorrente;
+    }
+
     void Inicializar()
     {
 

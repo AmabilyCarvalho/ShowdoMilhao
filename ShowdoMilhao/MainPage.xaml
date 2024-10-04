@@ -83,14 +83,19 @@
 
             <Grid ColumnDefinitions="*,*,*">
                 <Button Text="Ajuda 1"
+                        x:Name="buttonResposta6"
+                        Clicked="OnButton6Clicked"
                         TextColor="#ffe591"
                         Grid.Column="0"
                         BackgroundColor="#f8a23b"/>
                 <Button Text="Ajuda 2"
+                        x:Name="buttonResposta7"
                         TextColor="#ffe591"
                         Grid.Column="1"
                         BackgroundColor="#f8a23b"/>
-                <Button Text="Ajuda 3"
+                <Button Text="Viciados"
+                        x:Name="buttonResposta8"
+                        Clicked="OnButton8Clicked"
                         TextColor="#ffe591"
                         Grid.Column="2"
                         BackgroundColor="#f8a23b"/>
