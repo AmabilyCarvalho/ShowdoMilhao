@@ -45,12 +45,19 @@
             buttonResposta6.IsVisible = false;
         }
 
-        private void OnButton7Clicked(object sender, EventArgs e)
+        int Pulou = 0;
+        void OnButton7Clicked(object sender, EventArgs e)
+        
         {
-            gerenciador.ProximaPergunta();
+            if(Pulou == 2)
             buttonResposta7.IsVisible = false;
+            else
+            {
+                gerenciador.ProximaPergunta();
+                Pulou++;
+            }
+            buttonResposta7.Text = "Pular"+(3-Pulou)+"x";
         }
-
         private void OnButton8Clicked(object sender, EventArgs e)
         {
             var ajuda = new Viciados();

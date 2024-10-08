@@ -88,7 +88,7 @@
                         TextColor="#ffe591"
                         Grid.Column="0"
                         BackgroundColor="#f8a23b"/>
-                <Button Text="Pular"
+                <Button Text="Pular 3x"
                         x:Name="buttonResposta7"
                         Clicked="OnButton7Clicked"
                         TextColor="#ffe591"
